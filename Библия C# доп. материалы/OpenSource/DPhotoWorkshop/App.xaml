@@ -1,0 +1,17 @@
+﻿<Application x:Class="DPhotoWorkshop.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    StartupUri="PhotoWorkshopWindow.xaml">
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="AppCommands.xaml" />
+                <ResourceDictionary Source="Styles/MainStyles.xaml" />
+                <ResourceDictionary Source="Styles/DesignerItem.xaml"/>
+                <ResourceDictionary Source="/RibbonControlsLibrary;component/Themes/Office2007Blue.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

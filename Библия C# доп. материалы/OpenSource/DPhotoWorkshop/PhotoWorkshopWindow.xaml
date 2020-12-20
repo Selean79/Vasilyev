@@ -1,0 +1,261 @@
+﻿<r:RibbonWindow x:Class="DPhotoWorkshop.PhotoWorkshopWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:me="clr-namespace:DPhotoWorkshop"
+    xmlns:eng="clr-namespace:DPhotoWorkshop.Engine"
+    xmlns:enh="clr-namespace:DPhotoWorkshop.Engine.DesignerHelpers"
+    xmlns:r="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
+    Title="DPhotoWorkshop" Name="DPhotoWorkshopWindow" Height="550" Width="800" 
+    Icon="/DPhotoWorkshop;component/DPhotoWorkshop.ico"
+    Closing="Window_Closing" >
+
+    <Window.Resources>
+        <eng:MostRecentFiles x:Key="MostRecentFilesSource"/>
+        <enh:FontNamesList x:Key="systemFontsList"/>
+    </Window.Resources>
+
+    <DockPanel LastChildFill="True">
+        <r:Ribbon Name="ribbon1" xmlns:r="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary" DockPanel.Dock="Top">
+            <r:Ribbon.Resources>
+                <r:RibbonGroupSizeDefinitionCollection x:Key="RibbonLayoutSmall">
+                    <r:RibbonGroupSizeDefinition>
+                        <!-- This is the initial layout (S,S,S)-->
+                        <r:RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <r:RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <r:RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                    </r:RibbonGroupSizeDefinition>
+                    <r:RibbonGroupSizeDefinition IsCollapsed="True"/>
+                </r:RibbonGroupSizeDefinitionCollection>
+
+                <r:RibbonGroupSizeDefinitionCollection x:Key="RibbonLayout">
+                    <r:RibbonGroupSizeDefinition>
+                        <!-- Control sizes: L,L,L -->
+                        <r:RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
+                        <r:RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
+                        <r:RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
+                    </r:RibbonGroupSizeDefinition>
+                    <r:RibbonGroupSizeDefinition>
+                        <!-- Control sizes: L,M,M -->
+                        <r:RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
+                        <r:RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <r:RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                    </r:RibbonGroupSizeDefinition>
+                    <r:RibbonGroupSizeDefinition>
+                        <!-- Control sizes: L,S,S -->
+                        <r:RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
+                        <r:RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False"/>
+                        <r:RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False"/>
+                    </r:RibbonGroupSizeDefinition>
+                    <!-- Collapsed -->
+                    <r:RibbonGroupSizeDefinition IsCollapsed="True" />
+                </r:RibbonGroupSizeDefinitionCollection>
+            </r:Ribbon.Resources>
+
+            <!-- Define the application icon in the org -->
+            <r:Ribbon.ApplicationMenu>
+                <r:RibbonApplicationMenu>
+                    <r:RibbonApplicationMenu.Command>
+                        <r:RibbonCommand 
+                            LabelTitle="Application Button"
+                            LabelDescription="DPhotoWorkshop main menu"
+                            SmallImageSource="Images/palette.png"
+                            LargeImageSource="Images/palette.png"
+                            ToolTipTitle="DPhotoWorksop"
+                            ToolTipDescription="Click here to create, open or save image document." />
+                    </r:RibbonApplicationMenu.Command>
+
+                    <r:RibbonApplicationMenu.RecentItemList>
+                        <r:RibbonHighlightingList Name="MostRecentFilesList"  MostRecentFileSelected="ribbonApplicationMenu_MostRecentFileSelected"
+                                                  ItemsSource="{DynamicResource MostRecentFilesSource}" DisplayMemberPath="Name" ToolTip="Recent Items">
+                        </r:RibbonHighlightingList>
+
+                    </r:RibbonApplicationMenu.RecentItemList>
+                    <r:RibbonApplicationMenu.Footer>
+                        <DockPanel LastChildFill="False" >
+                            <r:RibbonButton DockPanel.Dock="Right" Margin="2" Command="{StaticResource ExitCommand}" />
+                        </DockPanel>
+                    </r:RibbonApplicationMenu.Footer>
+                    <r:RibbonApplicationMenuItem Command="{StaticResource NewCommand}" />
+                    <r:RibbonApplicationMenuItem Command="{StaticResource OpenCommand}" />
+                    <r:RibbonApplicationSplitMenuItem Command="{StaticResource SaveCommand}">
+                        <r:RibbonApplicationMenuItem Command="{StaticResource SaveCommand}" />
+                        <r:RibbonApplicationMenuItem Command="{StaticResource SaveAsCommand}" />
+                        <r:RibbonApplicationMenuItem Command="{StaticResource ExportAsImageCommand}" />                        
+                    </r:RibbonApplicationSplitMenuItem>
+                    <r:RibbonApplicationMenuItem Command="{StaticResource ProjectPropertiesCommand}" />
+                    <Separator />
+                    <r:RibbonApplicationSplitMenuItem Command="{StaticResource PrintCommand}">
+                        <r:RibbonApplicationSplitMenuItem Command="{StaticResource PrintCommand}"/>
+                        <r:RibbonApplicationSplitMenuItem Command="{StaticResource PrintPropCommand}"/>
+                    </r:RibbonApplicationSplitMenuItem>
+                    <Separator />
+                    <r:RibbonApplicationMenuItem Command="{StaticResource HelpCommand}" />
+                    <r:RibbonApplicationMenuItem Command="{StaticResource ExitCommand}" />
+                </r:RibbonApplicationMenu>
+            </r:Ribbon.ApplicationMenu>
+
+            <!-- Quick pick menu -->
+            <r:Ribbon.QuickAccessToolBar>
+                <r:RibbonQuickAccessToolBar CanUserCustomize="True">
+                    <r:RibbonButton Command="me:AppCommands.SaveCmd" r:RibbonQuickAccessToolBar.Placement="InCustomizeMenuAndToolBar" />
+                    <r:RibbonButton Command="me:AppCommands.PrintCmd" r:RibbonQuickAccessToolBar.Placement="InCustomizeMenuAndToolBar" />
+                </r:RibbonQuickAccessToolBar>
+            </r:Ribbon.QuickAccessToolBar>
+            
+            <r:Ribbon.Tabs>
+                <r:RibbonTab Label="General">
+                    <r:RibbonTab.Groups>
+                        <r:RibbonGroup GroupSizeDefinitions="{StaticResource RibbonLayout}">
+                            <r:RibbonGroup.Command>
+                                <r:RibbonCommand LabelTitle="Insert" />
+                            </r:RibbonGroup.Command>
+                            <r:RibbonButton Command="{StaticResource SelectFrameCommand}"/>
+                            <r:RibbonButton Command="{StaticResource InsertTextCommand}"/>
+                        </r:RibbonGroup>
+                        <r:RibbonGroup>
+                            <r:RibbonGroup.Command>
+                                <r:RibbonCommand LabelTitle="Effects" />
+                            </r:RibbonGroup.Command>
+                            <r:RibbonDropDownButton Command="{StaticResource EffectCommand}" Tag="0">
+                                <r:RibbonDropDownButton.Items>
+                                    <MenuItem Header="Drop shadow" Tag="0" Click="OnTextEffectChange_Executed"></MenuItem>
+                                    <MenuItem Header="Blur" Tag="1" Click="OnTextEffectChange_Executed"></MenuItem>
+                                </r:RibbonDropDownButton.Items>
+                            </r:RibbonDropDownButton>
+                            <r:RibbonButton Command="{StaticResource DeleteObjectCommand}"/>
+                        </r:RibbonGroup>
+                    </r:RibbonTab.Groups>
+                </r:RibbonTab>
+
+                <r:RibbonTab Label="Text">
+                    <r:RibbonTab.Groups>
+                        <r:RibbonGroup GroupSizeDefinitions="{StaticResource RibbonLayout}">
+                            <r:RibbonGroup.Command>
+                                <r:RibbonCommand LabelTitle="Text" />
+                            </r:RibbonGroup.Command>
+                            <r:RibbonButton Command="{StaticResource InsertTextCommand}"/>
+                            <r:RibbonSplitButton Name="TextColorDropDownButton" Command="{StaticResource TextColorCommand}">
+                                <r:RibbonSplitButton.Items>
+                                    <MenuItem Header="Black" Tag="-16777216" Click="TextColorMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="Blue" Tag="-16776961" Click="TextColorMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="Green" Tag="-16744448" Click="TextColorMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="Pink" Tag="-16181" Click="TextColorMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="Red" Tag="-65536" Click="TextColorMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="Yellow" Tag="-256" Click="TextColorMenuItem_Click"></MenuItem>
+                                </r:RibbonSplitButton.Items>
+                            </r:RibbonSplitButton>
+                            <r:RibbonButton Command="{StaticResource DeleteObjectCommand}"/>
+                        </r:RibbonGroup>
+
+                        <r:RibbonGroup GroupSizeDefinitions="{StaticResource RibbonLayout}">
+                            <r:RibbonGroup.Command>
+                                <r:RibbonCommand LabelTitle="Text properties" />
+                            </r:RibbonGroup.Command>
+
+                            <r:RibbonGroup.ItemsPanel>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                </Grid>
+                            </r:RibbonGroup.ItemsPanel>
+
+                            <r:RibbonComboBox IsReadOnly="true" IsEditable="True" Width="150" Margin="4,6,4,6" Grid.Column="0" Grid.Row="0" Name="currentFontName" ItemsSource="{StaticResource systemFontsList}" SelectedIndex="0" Text="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=SelectedItem.Content}" SelectionChanged="currentFontSize_SelectionChanged" />
+                            <r:RibbonComboBox Width="150" IsEditable="True" Margin="4,6,4,6" Grid.Column="0" Grid.Row="1" Name="currentFontSize"  SelectionChanged="currentFontSize_SelectionChanged" KeyUp="currentFontSize_KeyUp" SelectedIndex="4">
+                                <r:RibbonComboBoxItem Content="8" />
+                                <r:RibbonComboBoxItem Content="10" />
+                                <r:RibbonComboBoxItem Content="12" />
+                                <r:RibbonComboBoxItem Content="14" />
+                                <r:RibbonComboBoxItem Content="16" />
+                                <r:RibbonComboBoxItem Content="18" />
+                                <r:RibbonComboBoxItem Content="24" />
+                                <r:RibbonComboBoxItem Content="32" />
+                                <r:RibbonComboBoxItem Content="48"/>
+                                <r:RibbonComboBoxItem Content="72"/>
+                            </r:RibbonComboBox>
+                        </r:RibbonGroup>
+                    </r:RibbonTab.Groups>
+                </r:RibbonTab>
+
+                <r:RibbonTab Label="Frame">
+                    <r:RibbonTab.Groups>
+                        <r:RibbonGroup GroupSizeDefinitions="{StaticResource RibbonLayout}">
+                            <r:RibbonGroup.Command>
+                                <r:RibbonCommand LabelTitle="Basic borders" />
+                            </r:RibbonGroup.Command>
+                            <r:RibbonButton Command="{StaticResource SelectFrameCommand}"/>
+                            <r:RibbonDropDownButton Name="ColorSchemeDropDownButton" Command="{StaticResource FrameColorSchemeCommand}"/>
+                        </r:RibbonGroup>
+
+                        <r:RibbonGroup GroupSizeDefinitions="{StaticResource RibbonLayoutSmall}">
+                            <r:RibbonGroup.Command>
+                                <r:RibbonCommand LabelTitle="Border properties" />
+                            </r:RibbonGroup.Command>
+                            <r:RibbonSplitButton Command="{StaticResource FrameBackgroundCommand}">
+                                <r:RibbonSplitButton.Items>
+                                    <MenuItem Header="Black" Tag="-16777216" Click="FrameBackgroundMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="Blue" Tag="-16776961" Click="FrameBackgroundMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="Green" Tag="-16744448" Click="FrameBackgroundMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="Pink" Tag="-16181" Click="FrameBackgroundMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="Red" Tag="-65536" Click="FrameBackgroundMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="Yellow" Tag="-256" Click="FrameBackgroundMenuItem_Click"></MenuItem>
+                                </r:RibbonSplitButton.Items>
+                            </r:RibbonSplitButton>
+                            <r:RibbonSplitButton Command="{StaticResource FrameForegroundCommand}">
+                                <r:RibbonSplitButton.Items>
+                                    <MenuItem Header="Black" Tag="-16777216" Click="FrameForegroundMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="Blue" Tag="-16776961" Click="FrameForegroundMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="Green" Tag="-16744448" Click="FrameForegroundMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="Pink" Tag="-16181" Click="FrameForegroundMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="Red" Tag="-65536" Click="FrameForegroundMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="Yellow" Tag="-256" Click="FrameForegroundMenuItem_Click"></MenuItem>
+                                </r:RibbonSplitButton.Items>
+                            </r:RibbonSplitButton>
+                            <r:RibbonSplitButton Command="{StaticResource FrameLineWidthCommand}">
+                                <r:RibbonSplitButton.Items>
+                                    <MenuItem Header="1 pixel" Tag="1" Click="FrameLineWidthMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="2 pixel" Tag="2" Click="FrameLineWidthMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="3 pixel" Tag="3" Click="FrameLineWidthMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="4 pixel" Tag="4" Click="FrameLineWidthMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="5 pixel" Tag="5" Click="FrameLineWidthMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="6 pixel" Tag="6" Click="FrameLineWidthMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="7 pixel" Tag="7" Click="FrameLineWidthMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="8 pixel" Tag="8" Click="FrameLineWidthMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="9 pixel" Tag="9" Click="FrameLineWidthMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="10 pixel" Tag="10" Click="FrameLineWidthMenuItem_Click"></MenuItem>
+                                </r:RibbonSplitButton.Items>
+                            </r:RibbonSplitButton>
+                        </r:RibbonGroup>
+                    </r:RibbonTab.Groups>
+                </r:RibbonTab>
+            </r:Ribbon.Tabs>
+        </r:Ribbon>
+
+        <StatusBar Height="26" Name="statusBar" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" >
+            <Label Height="20" Name="statusLabel" Style="{StaticResource LabelStyle}">Label</Label>
+            <Label Height="20" Name="imageSizeLabel" Style="{StaticResource LabelStyle}" Width="120">Size</Label>
+            <Label Height="20" Name="imagePixelFormatLabel" Style="{StaticResource LabelStyle}" Width="120">Pixel Format</Label>
+        </StatusBar>
+
+        <DockPanel DockPanel.Dock="Bottom" Background="White">
+            <Border DockPanel.Dock="Top">
+                <Viewbox Name="ImageViewbox" Margin="8">
+                    <eng:DesignerCanvas x:Name="currentCanvas" Width="{Binding ElementName=currentImage, Path=Width}" Height="{Binding ElementName=currentImage, Path=Height}" >
+                        <Image Name="currentImage" Width="400" Height="200">
+                        </Image>
+                    </eng:DesignerCanvas>
+                    <Viewbox.BitmapEffect>
+                        <DropShadowBitmapEffect />
+                    </Viewbox.BitmapEffect>
+                </Viewbox>
+            </Border>
+        </DockPanel>
+    </DockPanel>
+</r:RibbonWindow>

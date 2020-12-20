@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPhotoWorkshop", "DPhotoWorkshop.csproj", "{604A70BD-87B9-4040-94DC-0D0AEAEC1BCE}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DPhotoWorkshopSetup", "Additional\DPhotoWorkshopSetup\DPhotoWorkshopSetup.vdproj", "{75214239-5B22-44E6-960E-957371FF2ACB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{604A70BD-87B9-4040-94DC-0D0AEAEC1BCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{604A70BD-87B9-4040-94DC-0D0AEAEC1BCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{604A70BD-87B9-4040-94DC-0D0AEAEC1BCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{604A70BD-87B9-4040-94DC-0D0AEAEC1BCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75214239-5B22-44E6-960E-957371FF2ACB}.Debug|Any CPU.ActiveCfg = Debug
+		{75214239-5B22-44E6-960E-957371FF2ACB}.Debug|Any CPU.Build.0 = Debug
+		{75214239-5B22-44E6-960E-957371FF2ACB}.Release|Any CPU.ActiveCfg = Release
+		{75214239-5B22-44E6-960E-957371FF2ACB}.Release|Any CPU.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

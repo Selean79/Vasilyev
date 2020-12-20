@@ -1,0 +1,140 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:r="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary">
+
+    <r:RibbonCommand x:Key="NewCommand"
+        LabelTitle="New"
+        ToolTipTitle="New"
+        ToolTipDescription="Create a new file."
+        SmallImageSource="Images/newfile.png"
+        LargeImageSource="Images/newfile32.png" />
+
+    <r:RibbonCommand x:Key="OpenCommand"
+        LabelTitle="Open"
+        ToolTipTitle="Open"
+        ToolTipDescription="Open an existing file."
+        SmallImageSource="Images/open.png"
+        LargeImageSource="Images/open32.png" />
+
+    <r:RibbonCommand x:Key="SaveCommand"
+        LabelTitle="Save"
+        ToolTipTitle="Save"
+        ToolTipDescription="Save the current file."
+        SmallImageSource="Images/save.png"
+        LargeImageSource="Images/save32.png" />
+
+    <r:RibbonCommand x:Key="SaveAsCommand"
+        LabelTitle="Save As"
+        ToolTipTitle="Save As"
+        ToolTipDescription="Save the current file with a new name."
+        SmallImageSource="Images/saveas32.png"
+        LargeImageSource="Images/saveas32.png" />
+
+    <r:RibbonCommand x:Key="ExportAsImageCommand"
+        LabelTitle="Export"
+        ToolTipTitle="Export"
+        ToolTipDescription="Save the current progect as image file"
+        SmallImageSource="Images/exportasimage32.png"
+        LargeImageSource="Images/exportasimage32.png" />
+    
+    <r:RibbonCommand x:Key="ProjectPropertiesCommand"
+        LabelTitle="Properties"
+        ToolTipTitle="Project properties"
+        ToolTipDescription="Show / edit progect properties."
+        SmallImageSource="Images/imageprop32.png"
+        LargeImageSource="Images/imageprop32.png" />
+    
+    <r:RibbonCommand x:Key="PrintCommand"
+        LabelTitle="Print"
+        ToolTipTitle="Print"
+        ToolTipDescription="Print current document"
+        SmallImageSource="Images/printer.png"
+        LargeImageSource="Images/printer32.png" />
+
+    <r:RibbonCommand x:Key="PrintPropCommand"
+        LabelTitle="Print options"
+        ToolTipTitle="Print options"
+        ToolTipDescription="Show print options window"
+        SmallImageSource="Images/printer_prop32.png"
+        LargeImageSource="Images/printer_prop32.png" />
+    
+    <r:RibbonCommand x:Key="HelpCommand"
+        LabelTitle="Help"
+        ToolTipTitle="Help"
+        ToolTipDescription="Information about DPhotoworkShop."
+        SmallImageSource="Images/help32.png"
+        LargeImageSource="Images/help32.png" />
+    
+    <r:RibbonCommand x:Key="ExitCommand"
+        LabelTitle="Exit"
+        ToolTipTitle="Exit"
+        ToolTipDescription="Exit from DPhotoWorkshop." 
+        SmallImageSource="Images/exit32.png"
+        LargeImageSource="Images/exit32.png"/>
+
+
+    <r:RibbonCommand x:Key="SelectFrameCommand"
+        LabelTitle="Choose Frame"
+        ToolTipTitle="Choose a frame"
+        ToolTipDescription="Apply a new frame to the photo"
+        SmallImageSource="Images/border.png"
+        LargeImageSource="Images/border32.png" />
+
+    <r:RibbonCommand x:Key="FrameColorSchemeCommand"
+        LabelTitle="Color Scheme"
+        ToolTipTitle="Frame color scheme "
+        ToolTipDescription="Select one of prebuilt color scheme"
+        SmallImageSource="Images/rainbow32.png"
+        LargeImageSource="Images/rainbow32.png" />
+
+    <r:RibbonCommand x:Key="FrameBackgroundCommand"
+        LabelTitle="Background"
+        ToolTipTitle="Background"
+        ToolTipDescription="Change frame background color"
+        SmallImageSource="Images/fill.png"
+        LargeImageSource="Images/fill.png" />
+
+    <r:RibbonCommand x:Key="FrameForegroundCommand"
+        LabelTitle="Foreground"
+        ToolTipTitle="Foreground"
+        ToolTipDescription="Change frame foreground color (color of lines)"
+        SmallImageSource="Images/pen.png"
+        LargeImageSource="Images/pen.png" />
+
+    <r:RibbonCommand x:Key="FrameLineWidthCommand"
+        LabelTitle="Line width"
+        ToolTipTitle="Line width"
+        ToolTipDescription="Change the width of lines"
+        SmallImageSource="Images/strike.png"
+        LargeImageSource="Images/strike.png" />
+
+    <r:RibbonCommand x:Key="InsertTextCommand"
+        LabelTitle="New text"
+        ToolTipTitle="Insert Text"
+        ToolTipDescription="Place text on the image"
+        SmallImageSource="Images/text.png"
+        LargeImageSource="Images/text32.png" />
+
+    <r:RibbonCommand x:Key="TextColorCommand"
+        LabelTitle="Text color"
+        ToolTipTitle="Text color"
+        ToolTipDescription="Change current text color"
+        SmallImageSource="Images/textcolor.png"
+        LargeImageSource="Images/bigtextcolor.png" />
+
+    <r:RibbonCommand x:Key="EffectCommand"
+        LabelTitle="Effect"
+        ToolTipTitle="Effect"
+        ToolTipDescription="Set or change current effect"
+        SmallImageSource="Images/texteffect32.png"
+        LargeImageSource="Images/texteffect32.png" />
+
+    <r:RibbonCommand x:Key="DeleteObjectCommand"
+        LabelTitle="Delete"
+        ToolTipTitle="Delete object"
+        ToolTipDescription="Delete selected object"
+        SmallImageSource="Images/del.png"
+        LargeImageSource="Images/del32.png" />
+
+</ResourceDictionary>

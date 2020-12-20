@@ -1,0 +1,132 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Data.OleDb;
+
+namespace DBConnectionProject
+{
+    public partial class DBProjectForm : Form
+    {
+        public DBProjectForm()
+        {
+            InitializeComponent();
+
+            ReadData();
+        }
+
+        void ReadData()
+        {
+            const int NAME_INDEX = 2;
+
+            OleDbConnection connection = CreateConnection();
+
+            OleDbCommand command = connection.CreateCommand();
+            command.CommandText = "GetPerson";
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add("@lastname", OleDbType.WChar, 50);
+            command.Parameters[0].Value = "Смирнов";
+
+            OleDbDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                ListViewItem item = listView1.Items.Add(reader["Фамилия"].ToString());
+                item.SubItems.Add(reader.GetValue(NAME_INDEX).ToString());
+                item.SubItems.Add(reader.GetDateTime(3).ToLongDateString());
+                item.SubItems.Add(reader.GetValue(4).ToString());
+            }
+
+            connection.Close();
+        }
+
+        private void количествоЗаписейToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OleDbConnection connection = CreateConnection();
+
+            OleDbCommand command = new OleDbCommand();
+            command.Connection = connection;
+            command.CommandText = "SELECT COUNT(*) FROM Peoples";
+
+            int number = (int)command.ExecuteScalar();
+            MessageBox.Show(number.ToString());
+
+            connection.Close();
+        }
+
+        private void вставитьИОткатитьТранзакциюToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OleDbConnection connection = CreateConnection();
+
+            OleDbTransaction transaction = connection.BeginTransaction();
+
+            OleDbCommand command = connection.CreateCommand();
+            command.CommandText = "INSERT INTO Peoples (Фамилия, Имя, ДатаРождения, Пол) " + 
+                " Values ('Иванова', 'Елена', '01.05.1971', 'Ж')";
+            command.Transaction = transaction;
+            
+            int rows = command.ExecuteNonQuery();
+            MessageBox.Show(rows.ToString());
+
+            transaction.Rollback();
+
+            connection.Close();
+        }
+
+        OleDbConnection CreateConnection()
+        {
+            OleDbConnection connection = new OleDbConnection();
+            connection.ConnectionString = @"Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;User ID=Flenov;Initial Catalog=TestDatabase;Data Source=FLENOV-HP\SQLEXPRESS";
+            try
+            {
+                connection.Open();
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка соединения с базой данных");
+            }
+
+            return connection;
+        }
+
+        private void выполнениеФункцииToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OleDbConnection connection = CreateConnection();
+
+            OleDbCommand command = connection.CreateCommand();
+            command.CommandText = "GetNameFunc";
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.Add("@return", OleDbType.WChar, 50);
+            command.Parameters.Add("@lastname", OleDbType.WChar, 50);
+
+            command.Parameters[0].Direction = ParameterDirection.ReturnValue;
+            command.Parameters[1].Value = "Смирнов";
+            command.Parameters[1].Direction = ParameterDirection.Input;
+
+            command.ExecuteNonQuery();
+            MessageBox.Show(command.Parameters[0].Value.ToString());
+        }
+
+        private void выполнениеФункцииКакЗапросаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OleDbConnection connection = CreateConnection();
+
+            OleDbCommand command = connection.CreateCommand();
+            command.CommandText = "{? = call GetNameFunc(?)}";
+
+            command.Parameters.Add("@return", OleDbType.WChar, 50);
+            command.Parameters.Add("@lastname", OleDbType.WChar, 50);
+
+            command.Parameters[0].Direction = ParameterDirection.ReturnValue;
+            command.Parameters[1].Value = "Смирнов";
+            command.Parameters[1].Direction = ParameterDirection.Input;
+
+            command.ExecuteScalar();
+            MessageBox.Show(command.Parameters[0].Value.ToString());
+        }
+    }
+}

@@ -1,0 +1,36 @@
+﻿<Window x:Class="DPhotoWorkshop.Dialogs.SelectFrameDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Photo Frames" Height="400" Width="610" 
+        Style="{StaticResource DialogWindowStyle}"
+        Icon="/DPhotoWorkshop;component/DPhotoWorkshop.ico"
+        ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        >
+    <DockPanel LastChildFill="True">
+        <Grid>
+            <ListBox Name="framesGrid" >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel IsItemsHost="True" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Width="204" Height="154" >
+                            <Canvas Width="200" Height="150" >
+                                <Image x:Name="image" Source="{Binding img}" Canvas.Left="{Binding leftoffset}" Canvas.Top="{Binding topoffset}" />
+                                <Frame x:Name="checkbox" Content="{Binding decor}" Canvas.Left="{Binding leftoffset}" Canvas.Top="{Binding topoffset}"  />
+                            </Canvas>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+
+            <WrapPanel Height="32" Name="statusBar" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" FlowDirection="RightToLeft">
+                <Button Width="84" Name="cancelButton" Margin="4" IsCancel="True">Cancel</Button>
+                <Button Width="84" Name="okButton" Margin="4" IsDefault="True" Click="okButton_Click">OK</Button>
+            </WrapPanel>
+        </Grid>
+    </DockPanel>
+</Window>
