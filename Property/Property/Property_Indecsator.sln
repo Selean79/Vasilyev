@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicProperty", "BasicPrope
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingProperty", "UsingProperty\UsingProperty.csproj", "{39E61E93-3C8D-43BA-93BB-2935902FA4F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicIndecsator", "BasicIndecsator\BasicIndecsator.csproj", "{E096D54F-8AC1-450F-9AF8-1624E9C73AFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndexsatorArray", "IndexsatorArray\IndexsatorArray.csproj", "{6A0F3402-A23B-4770-8D8D-6FAE38C47002}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{39E61E93-3C8D-43BA-93BB-2935902FA4F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39E61E93-3C8D-43BA-93BB-2935902FA4F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39E61E93-3C8D-43BA-93BB-2935902FA4F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E096D54F-8AC1-450F-9AF8-1624E9C73AFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E096D54F-8AC1-450F-9AF8-1624E9C73AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E096D54F-8AC1-450F-9AF8-1624E9C73AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E096D54F-8AC1-450F-9AF8-1624E9C73AFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A0F3402-A23B-4770-8D8D-6FAE38C47002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A0F3402-A23B-4770-8D8D-6FAE38C47002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A0F3402-A23B-4770-8D8D-6FAE38C47002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A0F3402-A23B-4770-8D8D-6FAE38C47002}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

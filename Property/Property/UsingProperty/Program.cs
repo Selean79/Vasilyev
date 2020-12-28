@@ -8,6 +8,7 @@ namespace UsingProperty
         {
             private int first;
             private int last;
+            private int test;
 
             public MyClass(int a, int b)
             {
